@@ -39,7 +39,6 @@
       z-index: -2;
     }
 
-    /* --- ENTER SCREEN --- */
     #enterScreen {
       position: fixed;
       inset: 0;
@@ -82,7 +81,7 @@
       to { transform: rotate(360deg); }
     }
 
-    /* AVATAR MAIOR */
+    /* AVATAR */
     .avatar {
       width: 180px;
       height: 180px;
@@ -98,11 +97,11 @@
       object-fit: cover;
     }
 
-    /* NOME 404 BRANCO E SUAVE */
+    /* NOME 404 */
     .nickname-main {
       font-weight: 800;
       font-size: 42px;
-      color: #ffffff; /* branco */
+      color: #ffffff;
       text-shadow:
         0 0 6px rgba(255, 255, 255, 0.6),
         0 0 12px rgba(255, 255, 255, 0.4);
@@ -135,8 +134,8 @@
     .logo-link img {
       width: 24px;
       height: 24px;
-      object-fit: contain;
-      filter: invert(1);
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .logo-link:hover {
@@ -144,7 +143,7 @@
       background: rgba(15, 23, 42, 0.95);
     }
 
-    /* VOLUME ARREDONDADO E BRANCO */
+    /* VOLUME */
     .volume-wrapper {
       position: relative;
       bottom: 0;
@@ -155,7 +154,7 @@
       width: 130px;
       height: 8px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.3); /* branco suave */
+      background: rgba(255, 255, 255, 0.3);
       cursor: pointer;
       backdrop-filter: blur(6px);
     }
@@ -164,7 +163,7 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #ffffff; /* branco */
+      background: #ffffff;
       border: none;
     }
 
@@ -194,7 +193,8 @@
 
 <body>
 
-  <img class="bg-img" src="background.gif" alt="background">
+  <!-- BACKGROUND VIA LINK -->
+  <img class="bg-img" src="https://i.pinimg.com/originals/70/94/15/70941504f37f036c0c016d9541a5b037.gif" alt="background">
 
   <div class="overlay"></div>
 
@@ -207,7 +207,7 @@
     H4CK3D MODE ACTIVATED<br>by 404
   </div>
 
-  <!-- AVATAR E NOME DIRETO -->
+  <!-- AVATAR -->
   <div class="avatar" id="avatarClick">
     <img src="perfil.gif" alt="404 avatar" />
   </div>
@@ -216,11 +216,11 @@
 
   <div class="logo-row">
     <a class="logo-link" href="https://discord.com/users/936706756204191796" target="_blank">
-      <img src="logodiscord.png" alt="Discord" />
+      <img src="https://i.pinimg.com/1200x/5d/13/c6/5d13c671ac7f8a812ba5fef221230e9b.jpg" alt="Discord" />
     </a>
 
     <a class="logo-link" href="https://github.com/404r0p" target="_blank">
-      <img src="logogithub.png" alt="GitHub" />
+      <img src="https://i.pinimg.com/736x/94/61/ff/9461ffde690752a65c8c5ce5c7a04dcc.jpg" alt="GitHub" />
     </a>
   </div>
 
@@ -250,7 +250,6 @@
       audio.volume = volumeSlider.value;
     });
 
-    // EASTER EGG
     let clicks = 0;
     avatar.addEventListener("click", () => {
       clicks++;
