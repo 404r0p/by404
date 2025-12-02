@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>404 | links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      cursor: url("cursor.png"), auto;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND AGORA É IMAGEM */
+    .bg-img {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      z-index: -2;
+    }
+
+    /* --- ENTER SCREEN --- */
+    #enterScreen {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 10;
+      transition: opacity 0.5s ease;
+    }
+
+    #enterScreen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .enter-text {
+      font-size: 22px;
+      color: #f0f0f0;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- CARD --- */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 340px;
+      padding: 24px 18px 18px;
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.04);
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nickname-main {
+      margin-top: 6px;
+      font-weight: 700;
+      font-size: 26px;
+      color: #ffffff;
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.8),
+        0 0 18px rgba(56, 189, 248, 0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* CONTADOR ESTILO GUNS.LOL */
+    .view-counter {
+      margin-top: -6px;
+      font-size: 13px;
+      color: #e5e5e5;
+      opacity: 0.85;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .logo-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.7);
+      cursor: pointer;
+      transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+    }
+
+    .logo-link img {
+      width: 80%;
+      height: 80%;
+      filter: invert(1);
+    }
+
+    .logo-link:hover {
+      transform: translateY(-1px) scale(1.07);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .volume-wrapper {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -38px;
+    }
+
+    .volume-slider {
+      width: 130px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.6);
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* EASTER EGG */
+    #easterEggMsg {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      padding: 18px 32px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(10px);
+      color: #00eaff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-shadow: 0 0 10px #00eaff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND AGORA É IMAGEM -->
+  <img class="bg-img" src="./background.jpg" alt="background">
+
+  <div class="overlay"></div>
+
+  <div id="enterScreen">
+    <div class="spinner"></div>
+    <div class="enter-text">CLICK TO ENTER</div>
+  </div>
+
+  <div id="easterEggMsg">
+    H4CK3D MODE ACTIVATED<br>by 404
+  </div>
+
+  <div class="card">
+    <div class="avatar" id="avatarClick">
+      <img src="./perfil.webp" alt="404 avatar" />
+    </div>
+
+    <div class="nickname-main">404</div>
+
+    <div id="viewCounter" class="view-counter">...</div>
+
+    <div class="logo-row">
+      <a class="logo-link" href="https://discord.com/users/936706756204191796" target="_blank">
+        <img src="./discordlogo.png" alt="Discord" />
+      </a>
+
+      <a class="logo-link" href="https://github.com/404r0p" target="_blank">
+        <img src="./logogithub.png" alt="GitHub" />
+      </a>
+    </div>
+
+    <div class="volume-wrapper">
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="./pock.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bgMusic");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const enterScreen = document.getElementById("enterScreen");
+    const avatar = document.getElementById("avatarClick");
+    const eggMsg = document.getElementById("easterEggMsg");
+
+    audio.volume = 0.7;
+
+    enterScreen.addEventListener("click", () => {
+      audio.play().catch(() => {});
+      enterScreen.classList.add("hidden");
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      audio.volume = volumeSlider.value;
+    });
+
+    fetch("https://api.countapi.xyz/hit/404links/site")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("viewCounter").innerText = `${data.value} views`;
+      })
+      .catch(() => {
+        document.getElementById("viewCounter").innerText = "— views";
+      });
+
+    let clicks = 0;
+    avatar.addEventListener("click", () => {
+      clicks++;
+      if (clicks >= 3) {
+        eggMsg.style.opacity = "1";
+        eggMsg.style.transform = "translate(-50%, -50%) scale(1)";
+
+        setTimeout(() => {
+          eggMsg.style.opacity = "0";
+          eggMsg.style.transform = "translate(-50%, -50%) scale(0.95)";
+        }, 2500);
+
+        clicks = 0;
+      }
+      setTimeout(() => { clicks = 0; }, 800);
+    });
+  </script>
+
+</body>
+</html>
