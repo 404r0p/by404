@@ -16,9 +16,10 @@
       color: #f9fafb;
       cursor: url("cursor.png"), auto;
       overflow: hidden;
+      flex-direction: column;
     }
 
-    /* BACKGROUND AGORA É IMAGEM */
+    /* BACKGROUND GIF */
     .bg-img {
       position: fixed;
       inset: 0;
@@ -81,31 +82,14 @@
       to { transform: rotate(360deg); }
     }
 
-    /* --- CARD --- */
-    .card {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 340px;
-      padding: 24px 18px 18px;
-      border-radius: 24px;
-      background: rgba(15, 23, 42, 0.04);
-      backdrop-filter: blur(20px);
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.7),
-        0 0 0 1px rgba(15, 23, 42, 0.8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
+    /* AVATAR MAIOR */
     .avatar {
-      width: 110px;
-      height: 110px;
+      width: 180px;
+      height: 180px;
       border-radius: 999px;
       overflow: hidden;
       cursor: pointer;
+      margin-bottom: 20px;
     }
 
     .avatar img {
@@ -114,53 +98,44 @@
       object-fit: cover;
     }
 
+    /* NOME 404 BRANCO E SUAVE */
     .nickname-main {
-      margin-top: 6px;
-      font-weight: 700;
-      font-size: 26px;
-      color: #ffffff;
+      font-weight: 800;
+      font-size: 42px;
+      color: #ffffff; /* branco */
       text-shadow:
-        0 0 8px rgba(255, 255, 255, 0.8),
-        0 0 18px rgba(56, 189, 248, 0.7);
+        0 0 6px rgba(255, 255, 255, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.4);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    /* CONTADOR ESTILO GUNS.LOL */
-    .view-counter {
-      margin-top: -6px;
-      font-size: 13px;
-      color: #e5e5e5;
-      opacity: 0.85;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
-      letter-spacing: 0.05em;
-    }
-
+    /* ICONE REDONDO MINIMALISTA */
     .logo-row {
-      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 18px;
+      margin-bottom: 20px;
     }
 
     .logo-link {
       width: 48px;
       height: 48px;
-      border-radius: 999px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(15, 23, 42, 0.7);
       cursor: pointer;
-      transition:
-        transform 0.1s ease,
-        background 0.15s ease;
+      transition: transform 0.1s ease, background 0.15s ease;
     }
 
     .logo-link img {
-      width: 80%;
-      height: 80%;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
       filter: invert(1);
     }
 
@@ -169,27 +144,28 @@
       background: rgba(15, 23, 42, 0.95);
     }
 
+    /* VOLUME ARREDONDADO E BRANCO */
     .volume-wrapper {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -38px;
+      position: relative;
+      bottom: 0;
+      margin-bottom: 10px;
     }
 
     .volume-slider {
       width: 130px;
-      height: 4px;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(255, 255, 255, 0.3); /* branco suave */
       cursor: pointer;
+      backdrop-filter: blur(6px);
     }
 
     .volume-slider::-webkit-slider-thumb {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      background: #ffffff; /* branco */
+      border: none;
     }
 
     /* EASTER EGG */
@@ -218,8 +194,7 @@
 
 <body>
 
-  <!-- BACKGROUND AGORA É IMAGEM -->
-  <img class="bg-img" src="./background.jpg" alt="background">
+  <img class="bg-img" src="background.gif" alt="background">
 
   <div class="overlay"></div>
 
@@ -232,32 +207,29 @@
     H4CK3D MODE ACTIVATED<br>by 404
   </div>
 
-  <div class="card">
-    <div class="avatar" id="avatarClick">
-      <img src="./perfil.webp" alt="404 avatar" />
-    </div>
+  <!-- AVATAR E NOME DIRETO -->
+  <div class="avatar" id="avatarClick">
+    <img src="perfil.gif" alt="404 avatar" />
+  </div>
 
-    <div class="nickname-main">404</div>
+  <div class="nickname-main">404</div>
 
-    <div id="viewCounter" class="view-counter">...</div>
+  <div class="logo-row">
+    <a class="logo-link" href="https://discord.com/users/936706756204191796" target="_blank">
+      <img src="logodiscord.png" alt="Discord" />
+    </a>
 
-    <div class="logo-row">
-      <a class="logo-link" href="https://discord.com/users/936706756204191796" target="_blank">
-        <img src="./discordlogo.png" alt="Discord" />
-      </a>
+    <a class="logo-link" href="https://github.com/404r0p" target="_blank">
+      <img src="logogithub.png" alt="GitHub" />
+    </a>
+  </div>
 
-      <a class="logo-link" href="https://github.com/404r0p" target="_blank">
-        <img src="./logogithub.png" alt="GitHub" />
-      </a>
-    </div>
-
-    <div class="volume-wrapper">
-      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
-    </div>
+  <div class="volume-wrapper">
+    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
   </div>
 
   <audio id="bgMusic" loop>
-    <source src="./pock.mp3" type="audio/mpeg" />
+    <source src="pock.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
@@ -278,27 +250,17 @@
       audio.volume = volumeSlider.value;
     });
 
-    fetch("https://api.countapi.xyz/hit/404links/site")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("viewCounter").innerText = `${data.value} views`;
-      })
-      .catch(() => {
-        document.getElementById("viewCounter").innerText = "— views";
-      });
-
+    // EASTER EGG
     let clicks = 0;
     avatar.addEventListener("click", () => {
       clicks++;
       if (clicks >= 3) {
         eggMsg.style.opacity = "1";
         eggMsg.style.transform = "translate(-50%, -50%) scale(1)";
-
         setTimeout(() => {
           eggMsg.style.opacity = "0";
           eggMsg.style.transform = "translate(-50%, -50%) scale(0.95)";
         }, 2500);
-
         clicks = 0;
       }
       setTimeout(() => { clicks = 0; }, 800);
